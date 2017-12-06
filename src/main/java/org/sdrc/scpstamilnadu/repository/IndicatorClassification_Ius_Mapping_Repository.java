@@ -1,0 +1,14 @@
+package org.sdrc.scpstamilnadu.repository;
+
+import org.sdrc.scpstamilnadu.domain.IndicatorClassification;
+import org.sdrc.scpstamilnadu.domain.IndicatorClassificationIndicatorUnitSubgroupMapping;
+import org.sdrc.scpstamilnadu.domain.IndicatorUnitSubgroup;
+
+public interface IndicatorClassification_Ius_Mapping_Repository {
+	
+	
+	public IndicatorClassificationIndicatorUnitSubgroupMapping save(IndicatorClassificationIndicatorUnitSubgroupMapping ic_ius);
+
+	public IndicatorClassificationIndicatorUnitSubgroupMapping findByIndicatorClassificationAndIndicatorUnitSubgroup(IndicatorClassification icSubSector, IndicatorUnitSubgroup ius);
+
+}

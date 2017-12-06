@@ -1,0 +1,116 @@
+.topMargin90 {
+    margin-top: 90px !important;
+}
+
+.paddingTop34{
+	padding-top: 34px;
+}
+
+.circleAttr {
+    width: 15px;
+    border-radius: 50%;
+    height: 15px;
+    margin: auto;
+}
+
+.legendAttr {
+    width: 12px;
+    height: 12px;
+    display:block;
+    
+}
+
+.legendText {
+    font-size: 13px;
+}
+
+.textWhite{
+	color: #fff;
+}
+
+.green {
+    background-color: rgb(34, 179, 105);
+}
+
+.red {
+    background-color: rgb(209, 63, 67);
+}
+
+.yellow {
+    background-color: rgb(241, 149, 55);
+}
+
+.grey{
+	background-color: #aaa;
+}
+
+.sectorList th  {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px 7px;
+    width : 260px;
+    height: 200px !important;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+.indicatorList {
+	border: 1px solid #ccc;
+}
+
+.indicatorList > thead > tr > th {
+    vertical-align: top;
+/*     max-width : 100px; */
+}
+
+.sectorList > thead > tr > th{
+/* 	vertical-align: inherit; */
+    padding: 0;
+}
+
+.cellWidth{
+	width: 105px;
+}
+
+.cellWidthHr{
+	/* 	width: 20.6%; */
+    width: 189px;
+}
+
+.factheading {
+	
+	border-bottom: 1px solid #ccc; 
+	border-top: 1px solid #ccc; 
+	padding: 28px 0 28px 0;
+	
+}
+
+.sectorTable{
+/* 	overflow-y: scroll; */
+/* 	max-height: 200px; */
+/*     min-height: 100px; */
+/* 	height:200px; */
+}
+
+.indicatorTable{
+/* 	overflow-y: scroll; */
+/* 	max-height: 550px; */
+/*     min-height: 100px; */
+}
+
+.page-header1{
+	border-bottom: 1px solid #ebebeb;
+    color: #fa5050;
+    font-weight: lighter;
+    padding-bottom: 6px;
+    margin-top: -8px;
+    margin-left: -2px;
+}
+@media (max-width: 992px)
+{
+	.indicatorTable{
+	overflow-y: scroll;
+	max-height: 550px;
+    min-height: 100px;
+}
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- Simple strategy: only path extension is taken into account -->
+	<bean id="cnManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="true" />
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="defaultContentType" value="text/html" />
+
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html" />
+				<entry key="xml" value="application/xml" />
+				<entry key="atom" value="application/atom+xml" />
+			</map>
+		</property>
+	</bean>
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/webjars/**"
+		location="classpath:/META-INF/resources/webjars/" />
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+	<mvc:view-controller path="/" view-name="dashboard" />
+	<mvc:view-controller path="/login" view-name="login" />
+	<mvc:view-controller path="/dataEntry" view-name="dataEntry" />
+	<mvc:view-controller path="/indicatorManagement" view-name="indicatorManagement" />
+	<mvc:view-controller path="/submissionManagement" view-name="submissionManagement" />
+	<mvc:view-controller path="/misReport" view-name="misReport" />
+	<mvc:view-controller path="/dashboard" view-name="dashboard" />
+	<mvc:view-controller path="/index" view-name="index" />
+	
+<!-- 	<mvc:view-controller path="/home" view-name="home" /> -->
+	
+	
+	<!-- - This bean resolves specific types of exceptions to corresponding 
+		logical - view names for error views. -->
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<!-- view name resolved using bean of type InternalResourceViewResolver 
+			(declared in mvc-view-config.xml) -->
+		<property name="defaultErrorView" value="exception" />
+		<!-- results into 'WEB-INF/jsp/exception.jsp' -->
+		<property name="warnLogCategory" value="warn" />
+		<!-- needed otherwise exceptions won't be logged anywhere -->
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</bean>
+</beans>
